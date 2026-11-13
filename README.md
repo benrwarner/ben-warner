@@ -1,7 +1,5 @@
 # Ben Warner
 
-![Ben Warner — résumé site header](assets/hero-poster.jpg)
-
 My personal résumé site. I'm a fourth-year Computer Science student at Ontario Tech University. I've done two co-op terms at Ontario Power Generation, where I built AI tooling on Azure, and I run my own self-hosted platform lab. I want to build platforms that speed up the energy transition.
 
 **Live site:** https://benrwarner.github.io/ben-warner
