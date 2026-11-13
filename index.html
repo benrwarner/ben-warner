@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ben Warner — Software, AI &amp; Platform Engineering</title>
+  <meta name="description" content="Benjamin Warner — fourth-year Computer Science student building AI tooling and self-hosted platforms. Two co-op terms at Ontario Power Generation. Open to relocation to the UK / EU.">
+  <meta property="og:title" content="Ben Warner">
+  <meta property="og:description" content="Software, AI & platform engineering. Building platforms that speed up the energy transition.">
+  <meta property="og:image" content="assets/hero-poster.jpg">
+  <link rel="icon" href="assets/ben_warner.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --display: "Jost", system-ui, sans-serif;
+      --body: "Jost", system-ui, sans-serif;
+      --sand: #f7f3ec;
+      --sand-deep: #efe7da;
+      --foam: #eaf2f0;
+      --ink: #1d3640;
+      --ink-soft: #4b6168;
+      --mist: #7f9397;
+      --tide: #3d7a80;
+      --sun: #c19a52;
+      --line: rgba(29, 54, 64, 0.12);
+      --max: 1080px;
+      --gutter: clamp(20px, 5vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--sand);
+      color: var(--ink);
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    strong { font-weight: 500; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+      background: #1b2a30 url("assets/hero-poster.jpg") center / cover no-repeat;
+    }
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(14, 26, 31, 0.72) 0%, rgba(14, 26, 31, 0.35) 55%, rgba(14, 26, 31, 0.1) 100%),
+        linear-gradient(180deg, rgba(247, 243, 236, 0) 72%, var(--sand) 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 96px var(--gutter);
+    }
+    .hero .avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: block;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0.85;
+      margin: 0 0 14px;
+    }
+    .hero h1, .contact h2, h3 { font-family: var(--display); }
+    .hero h1 {
+      font-weight: 200;
+      font-size: clamp(48px, 9vw, 104px);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      margin: 0 0 22px;
+    }
+    .hero .lede {
+      max-width: 34ch;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.5;
+      margin: 0 0 32px;
+      opacity: 0.92;
+    }
+    .hero .lede em {
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1;
+      color: #f1d9a4;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 26px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .links a {
+      text-decoration: none;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      padding-bottom: 3px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .links a:hover, .links a:focus-visible { border-color: #f1d9a4; color: #f1d9a4; }
+    .hero .meta {
+      margin-top: 36px;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      opacity: 0.8;
+    }
+
+    /* ---------- Sections ---------- */
+    main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    section:first-child { border-top: 0; padding-top: 40px; }
+    .section-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px 56px;
+    }
+    .section-label {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--tide);
+      margin: 6px 0 0;
+    }
+    h3 {
+      font-weight: 400;
+      font-size: 21px;
+      line-height: 1.35;
+      margin: 0;
+    }
+    .about p { margin: 0 0 18px; font-size: 19px; max-width: 62ch; }
+    .about p:last-child { margin-bottom: 0; }
+    .muted { color: var(--ink-soft); }
+
+    .callout {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 8px;
+      padding: 10px 18px;
+      border: 1px solid rgba(193, 154, 82, 0.45);
+      border-radius: 999px;
+      background: rgba(193, 154, 82, 0.08);
+      font-size: 15px;
+    }
+    .callout::before {
+      content: "";
+      flex: none;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--sun);
+    }
+
+    /* Timeline entries */
+    .entry { padding: 0 0 40px; }
+    .entry:last-child { padding-bottom: 0; }
+    .entry-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px 24px;
+      align-items: baseline;
+    }
+    .when {
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--mist);
+      white-space: nowrap;
+    }
+    .where { color: var(--ink-soft); margin: 2px 0 12px; font-size: 16px; }
+    ul.bullets { margin: 0; padding: 0; list-style: none; }
+    ul.bullets li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+    }
+    ul.bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.85em;
+      width: 10px; height: 1px;
+      background: var(--tide);
+    }
+    ul.bullets strong { color: var(--ink); }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 26px 26px 22px;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 14px 30px -18px rgba(29, 54, 64, 0.35);
+    }
+    .card .when { display: block; margin-bottom: 6px; }
+    .card h3 { margin-bottom: 10px; }
+    .card p { margin: 0 0 14px; color: var(--ink-soft); font-size: 16px; }
+    .card a.ext {
+      font-size: 14px;
+      color: var(--tide);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 14px 0 0; }
+    .tags li {
+      font-size: 12.5px;
+      letter-spacing: 0.03em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--foam);
+      color: var(--ink-soft);
+    }
+
+    /* Skills */
+    .skills { display: grid; gap: 22px; }
+    .skill-row { display: grid; grid-template-columns: 180px 1fr; gap: 8px 24px; }
+    .skill-row h4 { margin: 3px 0 0; font-weight: 400; font-size: 15px; }
+    .skill-row .tags { margin: 0; }
+    .skill-row .tags li { background: var(--sand-deep); }
+
+    /* Contact / footer */
+    .foot-wrap { background: var(--foam); border-radius: 24px 24px 0 0; }
+    .contact {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 80px var(--gutter) 40px;
+    }
+    .contact h2 {
+      font-weight: 200;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.1;
+      margin: 0 0 18px;
+    }
+    .contact p { margin: 0 0 28px; max-width: 52ch; color: var(--ink-soft); }
+    .contact .links a { color: var(--ink); border-color: rgba(29, 54, 64, 0.3); }
+    .contact .links a:hover, .contact .links a:focus-visible { color: var(--tide); border-color: var(--tide); }
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px var(--gutter) 40px;
+      font-size: 13px;
+      color: var(--mist);
+    }
+
+    /* Reveal on scroll (only when JS is running) */
+    .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      body { font-size: 16px; }
+      .section-grid, .skill-row { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: 1fr; }
+      section { padding: 56px 0; }
+      .hero::after {
+        background:
+          linear-gradient(90deg, rgba(14, 26, 31, 0.7), rgba(14, 26, 31, 0.45)),
+          linear-gradient(180deg, rgba(247, 243, 236, 0) 72%, var(--sand) 100%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero video { display: none; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    @media print {
+      .hero { min-height: auto; color: var(--ink); background: none; }
+      .hero video, .hero::after { display: none; }
+      .links a { border: 0; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+  <header class="hero">
+    <video autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-inner">
+      <img class="avatar" src="assets/ben_warner.jpeg" alt="Portrait of Ben Warner" width="76" height="76">
+      <p class="eyebrow">Software · AI · Platform Engineering</p>
+      <h1>Ben Warner</h1>
+      <p class="lede">I build AI tooling and self-hosted platforms, and I want to put them to work on <em>the energy transition.</em></p>
+
+      <ul class="links" aria-label="Contact and profiles">
+        <li><a href="mailto:benrwarner1@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ben-warner-565597257" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/benrwarner" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://wemake.ben-warner.dev" target="_blank" rel="noopener">WeMake</a></li>
+        <li><a href="assets/ben_warner_resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+      </ul>
+
+      <p class="meta">Whitby, Ontario &nbsp;·&nbsp; Open to relocation to the UK / EU</p>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about" class="reveal">
+      <div class="section-grid">
+        <h2 class="section-label">About</h2>
+        <div class="about">
+          <p>I'm a fourth-year Computer Science student at Ontario Tech University. I've done two co-op terms at <strong>Ontario Power Generation</strong>, one of North America's largest clean-energy utilities, where I built AI tooling on Azure for enterprise engineering teams.</p>
+          <p class="muted">Outside work I run my own multi-node infrastructure: Kubernetes with GitOps, Docker, Linux servers, a private mesh network and local LLM inference. Most of my side projects start there. I like building systems that are grounded, deterministic and easy to run for a long time.</p>
+          <p><span class="callout">Eligible for the UK Youth Mobility visa. No employer sponsorship required.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <div class="section-grid">
+        <h2 class="section-label">Experience</h2>
+        <div>
+          <article class="entry">
+            <div class="entry-head">
+              <h3>Computer Science Co-op, Software / AI</h3>
+              <span class="when">May – Aug 2026</span>
+            </div>
+            <p class="where">Ontario Power Generation · Oshawa, ON</p>
+            <ul class="bullets">
+              <li>Designed and built <strong>OPGKit Studio</strong>, an AI-powered backlog generator and <strong>deterministic</strong> development-time estimator for enterprise software teams.</li>
+              <li>Generated structured tickets with <strong>Azure AI Foundry</strong> and stored their embeddings as <strong>SQL vectors</strong>, so similarity search runs inside the existing enterprise database with no new infrastructure.</li>
+              <li>Estimated effort by matching new tickets to past approved, estimated tickets by <strong>cosine distance</strong>. Estimates come from the team's own history, not from model guesses.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3>Computer Science Co-op, Data &amp; Digital Modernization</h3>
+              <span class="when">Jan – Dec 2025</span>
+            </div>
+            <p class="where">Ontario Power Generation · Darlington Nuclear &amp; Oshawa, ON</p>
+            <ul class="bullets">
+              <li><strong>Maintenance Strategies (Darlington Nuclear):</strong> built Power BI dashboards that turn SCR and observation &amp; coaching data into insights for plant maintenance teams.</li>
+              <li><strong>Nuclear Modernization (Corporate HQ):</strong> helped stand up the <strong>Nucleus</strong> platform and supported discovery for the Extrad application.</li>
+              <li>Placed <strong>2nd in the Microsoft Copilot Hackathon</strong>, organized by OPG and held at Microsoft Canada HQ in Toronto.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="reveal">
+      <div class="section-grid">
+        <h2 class="section-label">Projects</h2>
+        <div class="projects">
+
+          <article class="card">
+            <span class="when">2024 – Present</span>
+            <h3>Self-Hosted Platform Lab</h3>
+            <p>A multi-node lab (Mac Mini M1, Raspberry Pis, headless Ubuntu servers) on a private Tailscale mesh. A k3s cluster syncs from GitHub through Argo CD and publishes through Cloudflare Tunnels, so no inbound ports are open. It also hosts local LLM inference and <strong>Malcolm</strong>, a voice assistant that runs entirely on local hardware.</p>
+            <ul class="tags">
+              <li>k3s</li><li>Argo CD</li><li>Docker</li><li>Tailscale</li><li>Cloudflare Tunnel</li><li>Nginx</li><li>Infisical</li><li>Ollama</li><li>faster-whisper</li><li>Piper</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="when">2026 – Present</span>
+            <h3>WeMake</h3>
+            <p>A realtime collaborative music studio in the browser. It ships as a GHCR container image, runs on a Raspberry Pi and is served publicly through Cloudflare Tunnel.</p>
+            <a class="ext" href="https://wemake.ben-warner.dev" target="_blank" rel="noopener">wemake.ben-warner.dev ↗</a>
+            <ul class="tags">
+              <li>Realtime</li><li>Docker</li><li>GHCR</li><li>Cloudflare</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="when">2026 – Present</span>
+            <h3>MCP &amp; AI Agent Tooling</h3>
+            <p><strong>axis-mcp-cli</strong> is a management layer for installing and running Model Context Protocol servers that connect AI agents to tools and data. <strong>to-prod</strong> turns my OPG work into a product: it sizes software projects from a team's historical tickets and real infrastructure, and uses BM25 + embedding retrieval with constrained decoding to keep output grounded and deterministic.</p>
+            <ul class="tags">
+              <li>Python</li><li>TypeScript</li><li>FastMCP</li><li>RAG</li><li>BM25</li><li>Embeddings</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="when">2026 – Present</span>
+            <h3>Embedded Control Systems</h3>
+            <p><strong>Automated greenhouse:</strong> an ESP32 runs the pump and fan in a closed loop from soil, light and humidity sensors. <strong>Go-To telescope mount:</strong> ESP32 firmware written from scratch, implementing LX200 and the RA/Dec → alt/az → step pointing math.</p>
+            <ul class="tags">
+              <li>C/C++</li><li>ESP32</li><li>TMC2209</li><li>Sensors</li><li>LX200</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <div class="section-grid">
+        <h2 class="section-label">Skills</h2>
+        <div class="skills">
+          <div class="skill-row">
+            <h4>Cloud &amp; Platform</h4>
+            <ul class="tags"><li>Azure (AI Foundry)</li><li>GCP</li><li>Cloudflare Workers &amp; Tunnels</li><li>Supabase</li><li>Railway</li><li>Coolify</li><li>Stripe metered billing</li></ul>
+          </div>
+          <div class="skill-row">
+            <h4>Infrastructure &amp; DevOps</h4>
+            <ul class="tags"><li>Kubernetes (k3s)</li><li>Argo CD / GitOps</li><li>Docker &amp; Compose</li><li>Nginx</li><li>Tailscale</li><li>Linux</li><li>systemd</li><li>Bash</li></ul>
+          </div>
+          <div class="skill-row">
+            <h4>AI &amp; LLM</h4>
+            <ul class="tags"><li>MCP / FastMCP</li><li>RAG</li><li>Vector search</li><li>BM25</li><li>Constrained decoding</li><li>Agent loops</li><li>Evals</li><li>Ollama</li><li>Claude &amp; OpenAI APIs</li></ul>
+          </div>
+          <div class="skill-row">
+            <h4>Languages</h4>
+            <ul class="tags"><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>C/C++</li><li>Java</li><li>HTML/CSS</li></ul>
+          </div>
+          <div class="skill-row">
+            <h4>Frameworks &amp; Data</h4>
+            <ul class="tags"><li>Next.js</li><li>React</li><li>Angular</li><li>FastAPI</li><li>Node.js</li><li>Postgres</li><li>Power BI</li><li>Power Automate</li><li>Vitest</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="reveal">
+      <div class="section-grid">
+        <h2 class="section-label">Education</h2>
+        <div>
+          <div class="entry-head">
+            <h3>Ontario Tech University</h3>
+            <span class="when">Expected April 2027</span>
+          </div>
+          <p class="where">Bachelor of Science, Computer Science · Oshawa, ON</p>
+          <ul class="bullets">
+            <li>Coursework: Data Structures, Scientific Data Analytics, Computational Science, Environmental Science.</li>
+            <li>Canadian Computing Competition (CCC) participant, twice.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="foot-wrap">
+    <section id="contact" class="contact reveal">
+      <h2>Let's build something.</h2>
+      <p>I'm looking for roles in software, AI and platform engineering, especially in energy. I'm based near Toronto and ready to relocate to the UK or EU.</p>
+      <ul class="links">
+        <li><a href="mailto:benrwarner1@gmail.com">benrwarner1@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/ben-warner-565597257" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/benrwarner" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/ben_warner_resume.pdf" target="_blank" rel="noopener">Download résumé</a></li>
+      </ul>
+    </section>
+    <footer>© <span id="year">2026</span> Benjamin Warner</footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const reveals = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach((el) => io.observe(el));
+
+      // Pause the hero video while it's off screen
+      const video = document.querySelector(".hero video");
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) video.play().catch(() => {}); else video.pause();
+      }).observe(video);
+    } else {
+      reveals.forEach((el) => el.classList.add("in"));
+    }
+  </script>
+</body>
+</html>

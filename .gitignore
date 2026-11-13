@@ -1,0 +1,10 @@
+# Raw source video (96 MB) — the site uses the compressed assets/hero.mp4
+12227478_1920_1080_60fps.mp4
+
+# Working copies; the site serves the versions in assets/
+/ben_warner.jpeg
+/ben_warner_resume*.pdf
+/ben_warner_resume.tex
+
+# Font experiments
+*-font/
