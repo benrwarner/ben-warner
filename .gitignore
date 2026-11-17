@@ -8,3 +8,6 @@
 
 # Font experiments
 *-font/
+
+# Wrangler local state
+.wrangler/
