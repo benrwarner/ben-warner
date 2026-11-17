@@ -11,8 +11,6 @@ My personal résumé site. I'm a fourth-year Computer Science student at Ontario
 - LinkedIn: [linkedin.com/in/ben-warner-565597257](https://www.linkedin.com/in/ben-warner-565597257)
 - GitHub: [github.com/benrwarner](https://github.com/benrwarner)
 
-I'm open to relocating to the UK or EU, and I'm eligible for the UK Youth Mobility visa, so no employer sponsorship is needed.
-
 ## About the site
 
 It's a single static page with no build step or framework:

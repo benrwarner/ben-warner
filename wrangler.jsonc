@@ -1,0 +1,8 @@
+{
+  "name": "ben-warner",
+  "compatibility_date": "2026-11-01",
+  // Static site: serve the repo root as assets (see .assetsignore for exclusions)
+  "assets": { "directory": "." },
+  // Required for `wrangler preview` (non-production branch builds)
+  "previews": {}
+}
